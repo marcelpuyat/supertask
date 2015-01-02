@@ -1,28 +1,40 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+	<div class="ui pagination menu">
+		<a class="item" style="cursor: default;">
+			SuperTask
+			<i class="book icon"></i>
+		</a>
+	  <a class="item" ng-repeat="goal in goals" ng-click="setVisibleGoal(goal)" ng-class="{'active-tab':visibleGoal == goal}">
+	  	<span ng-class='{"complete-goal-tab":isComplete(goal)}'>{{goal.name}}</span>
+	  	<i class="remove icon" ng-click="deleteGoal(goal)"></i>
+	  </a>
+	  <a class="item" ng-click="createNewGoal()">
+	  	<i class="plus icon"></i>
+	  </a>
+	</div>
 
-<header class="hero-unit" id="banner">
+	<div ng-show="visibleGoal != null" class="ui piled segment main-segment">
+		<span ng-controller="EditTitleController as editTitle">
+			<h1 class="ui center aligned header" ng-hide="editTitle.editing" ng-dblclick="editTitle.startEditing()">
+				{{visibleGoal.name}}
+				<i ng-show='isComplete(visibleGoal)'class="green check circle icon"></i>
+			</h1>
+				<div class="ui big icon input" ng-class="{'centered-div':editTitle.editing}" ng-show="editTitle.editing">
+					<input blur-or-enter boe-callback="editTitle.endEditing()" ng-model="visibleGoal.name" class="centered-inline">
+				</div>
+		</span>
+		<task-outline tasks="visibleGoal.tasks"></task-outline>
+	</div>
+
+	<div ng-show="visibleGoal == null" class="ui piled segment main-segment">
+		<h3 class="centered-inline">Click the + tab to add a checklist!</h3>
+	</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+      <p id="footer-content">SuperTask <i class="book icon"></i>|
+        <a href="mailto:marcelp@stanford.edu?subject=SuperTask Feedback">
+							marcelp@stanford.edu</a>  |
+       	<a ng-click="logout()" class="mouseover-glove">Log out</a>
+      </p>
   </div>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<footer class="footer">
-  <div class="container">
-      <p>Angular Fullstack v2.0.13 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
-  </div>
-</footer>
+</nav>

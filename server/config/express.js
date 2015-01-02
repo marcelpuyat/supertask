@@ -15,6 +15,10 @@ var errorHandler = require('errorhandler');
 var path = require('path');
 var config = require('./environment');
 
+var LOCAL_ENV = require('./local.env');
+
+var session = require('express-session');
+
 var passport = require('passport');
 var passportConfigurer = require('./passport');
 
@@ -28,13 +32,16 @@ module.exports = function(app) {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
 
+  app.use(methodOverride());
+  app.use(cookieParser(LOCAL_ENV.SESSION_SECRET));
+  app.use(session({
+    secret: LOCAL_ENV.SESSION_SECRET
+  }));
+
   /* Authentication configuration */
   app.use(passport.initialize());
   app.use(passport.session());
   passportConfigurer.configureSerialization();
-
-  app.use(methodOverride());
-  app.use(cookieParser());
   
   if ('production' === env) {
     app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));

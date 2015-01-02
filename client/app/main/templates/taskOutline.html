@@ -1,0 +1,11 @@
+<div class="task-outline-container">
+	<div class="ui styled accordion">
+		<span ng-repeat="task in tasks">
+			<super-task ng-if="isSuperTask(task)" task="task" parent-task-group="tasks">
+			</super-task>
+			<leaf-task ng-if="!isSuperTask(task)" task="task" parent-task-group="tasks"></leaf-task>
+		</span>
+	</div>
+	<add-button class="add-button" label="SuperTask" add-fn="addSuperTask(tasks)" size="tiny"></add-button>
+	<add-button class="add-button" add-fn="addTask(tasks)" size="tiny"></add-button>
+</div>

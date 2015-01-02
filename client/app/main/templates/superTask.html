@@ -1,0 +1,32 @@
+<div class="title" ng-class="{'bold-accordion-text':isComplete()}">
+	<div class="ui grid">
+		<div class="left floated ten wide column">
+			<i class="dropdown icon supertask-bullet"></i>
+			<span class="supertask-title">{{task.header}}</span>
+			<div class="ui {{greenIfAllChildrenComplete()}} horizontal label" style="margin-left: 8px;">{{completed}}/{{task.contents.length}}</div>
+		</div>
+		<div class="right floated right aligned six wide column">
+			<edit-component field-to-edit="task.header" placeholder="New name" on-edit-callback="save()"></edit-component>
+			<i class="remove icon" ng-click="delete(parentTaskGroup, task)"></i>
+		</div>
+	</div>
+</div>
+
+<div class="content content-section">
+	<div class="button-section">
+		<add-button class="add-button content-button" label="SuperTask" add-fn="addSuperTask(task.contents)" size="mini"></add-button>
+		<add-button class="add-button content-button" add-fn="addTask(task.contents)" size="mini"></add-button>
+	</div>
+	<div class="ui styled accordion">
+
+		<span ng-repeat="subTask in task.contents">
+
+			<leaf-task ng-if="!isSuperTask(subTask)" task="subTask" parent-task-group="task.contents"></leaf-task>
+
+			<super-task ng-if="isSuperTask(subTask)" task="subTask" parent-task-group="task.contents">
+			</super-task>
+
+		</span>
+
+	</div>
+</div>

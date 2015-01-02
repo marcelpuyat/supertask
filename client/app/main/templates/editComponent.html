@@ -1,0 +1,5 @@
+<div class="ui input" ng-show="shouldShowEditBar">
+  <input type="text" placeholder="{{placeholder}}" ng-model="fieldToEdit"
+  	blur-or-enter boe-callback="hideEditBar()">
+</div>
+<i class="write icon" ng-click="showEditBar()"></i>

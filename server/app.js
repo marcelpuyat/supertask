@@ -11,32 +11,6 @@ var express = require('express');
 var mongoose = require('mongoose');
 var config = require('./config/environment');
 
-/* Authentication with PassportJS */
-var passport = require('passport'),
-		LocalStrategy = require('passport-local').Strategy,
-		User = require('./api/user/user.model');
-
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function(err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      user.validPassword(password, function(err, isMatch) {
-      	if (err) { return done(err); }
-      	if (isMatch) {
-      		console.log('correct');
-      		return done(null, user);
-      	} else {
-      		console.log("wrong");
-      		return done(null, false, { message: 'Incorrect password.' });
-      	}
-      });
-    });
-  }
-));
-
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
 

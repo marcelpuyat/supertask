@@ -3,15 +3,19 @@
 var passport = require('passport');
 
 exports.attemptLogin = function(req, res, next) {
-  passport.authenticate('local', function(err, user, info) {
+	passport.authenticate('local', function(err, user, info) {
     if (err) { return next(err); }
-    if (!user) { return res.redirect('/login/retry'); }
-
+    if (!user) { return res.json({'fail': 'fail'}); }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
-      return res.redirect('/home');
+      return res.json({'user': user});
     });
   })(req, res, next);
+}
+
+exports.logout = function(req, res, next) {
+  req.logout();
+  res.send(200);
 }
 
 exports.retryLogin = function(req, res, next) {

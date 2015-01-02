@@ -6,6 +6,12 @@ angular.module('passportTestApp')
       .state('main', {
         url: '/',
         templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        User: 'User',
+        resolve: {
+        	currUserPromise: function($http) {
+        		return $http({method: 'GET', url: '/api/users'});
+        	}
+        }
       });
   });

@@ -5,9 +5,17 @@ angular.module('passportTestApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'authorization',
+  'attributeDirectives',
+  'componentDirectives',
+  'outlineDirectives',
+  'controllers',
+  'services',
+  'RecursionHelper'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+
     $urlRouterProvider
       .otherwise('/');
 

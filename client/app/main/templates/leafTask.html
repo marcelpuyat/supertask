@@ -1,0 +1,12 @@
+<div class="title" ng-class="{'bold-accordion-text': task.completed, 'light-accordion-text': !task.completed}">
+	<div class="ui grid">
+	<div class="left floated ten wide column" ng-click="toggleCompletion(task)">
+		<span class="leaftask-title">{{task.text}}</span>
+		<i class="check square icon" ng-class="{disabled: !task.completed, green: task.completed}"></i>
+	</div>
+	<div class="right floated right aligned six wide column">
+		<edit-component field-to-edit="task.text" placeholder="New name" on-edit-callback="save()"></edit-component>
+		<i class="remove icon" ng-click="delete(parentTaskGroup, task)"></i>
+	</div>
+	</div>
+</div>

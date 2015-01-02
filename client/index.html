@@ -13,11 +13,23 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+      <link rel="stylesheet" href="bower_components/semantic-ui/dist/semantic.min.css" />
+      <link rel="stylesheet" href="bower_components/semantic-ui/dist/semantic.min.css" />
+      <link rel="stylesheet" href="bower_components/semantic-ui-accordion/accordion.min.css" />
+      <link rel="stylesheet" href="bower_components/semantic-ui-modal/modal.min.css" />
+      <link rel="stylesheet" href="bower_components/semantic-ui-dimmer/dimmer.min.css" />
+      <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
+      <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="app/main/styles/style.css">
+      <link rel="stylesheet" href="app/signup/signup.css">
+      <link rel="stylesheet" href="components/modal/modal.css">
       <!-- endinjector -->
     <!-- endbuild -->
   </head>
@@ -46,12 +58,39 @@
     <![endif]-->
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/semantic-ui-accordion/accordion.min.js"></script>
+      <script src="bower_components/semantic-ui-modal/modal.min.js"></script>
+      <script src="bower_components/semantic-ui-dimmer/dimmer.min.js"></script>
+      <script src="bower_components/angular-recursion/angular-recursion.min.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
           <!-- injector:js -->
+          <script src="app/authentication/login.controller.js"></script>
+          <script src="app/authentication/loginService.js"></script>
+          <script src="app/authentication/routing.js"></script>
+          <script src="app/main/controllers/controllers.js"></script>
+          <script src="app/main/directives/attributeDirectives.js"></script>
+          <script src="app/main/directives/componentDirectives.js"></script>
+          <script src="app/main/directives/outlineDirectives.js"></script>
+          <script src="app/main/main.controller.js"></script>
+          <script src="app/main/main.js"></script>
+          <script src="app/main/services/services.js"></script>
+          <script src="app/signup/signup.controller.js"></script>
+          <script src="app/signup/signup.js"></script>
+          <script src="app/signup/signup.service.js"></script>
+          <script src="components/modal/modal.service.js"></script>
+          <script src="components/navbar/navbar.controller.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
 </body>
