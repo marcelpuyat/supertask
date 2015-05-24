@@ -15,7 +15,6 @@
     "lodash": "~2.4.1",
     "angular-ui-router": "~0.2.10",
     "angular-recursion": "~1.0.5",
-    "semantic-ui-accordion": "~1.12.3",
     "semantic-ui-modal": "~1.12.3",
     "semantic-ui-dimmer": "~1.12.3",
     "semantic-ui": "~1.12.3"
