@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "main": "server/app.js",
   "dependencies": {
+    "angular-recursion": "^1.0.5",
     "bcrypt": "^0.8.3",
     "body-parser": "~1.5.0",
     "composable-middleware": "^0.3.0",
