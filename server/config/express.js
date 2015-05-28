@@ -35,7 +35,10 @@ module.exports = function(app) {
   app.use(methodOverride());
   app.use(cookieParser(LOCAL_ENV.SESSION_SECRET));
   app.use(session({
-    secret: LOCAL_ENV.SESSION_SECRET
+    secret: LOCAL_ENV.SESSION_SECRET,
+    cookie: {
+      maxAge: 10000
+    }
   }));
 
   /* Authentication configuration */

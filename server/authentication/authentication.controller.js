@@ -8,7 +8,6 @@ exports.attemptLogin = function(req, res, next) {
     if (!user) { return res.json({'fail': 'fail'}); }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
-      req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 60;
       return res.json({'user': user});
     });
   })(req, res, next);
