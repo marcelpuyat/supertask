@@ -37,7 +37,7 @@ module.exports = function(app) {
   app.use(session({
     secret: LOCAL_ENV.SESSION_SECRET,
     cookie: {
-      maxAge: 10000
+      maxAge: 1000 * 60 * 60 * 24 * 90 // 3 months
     }
   }));
 
