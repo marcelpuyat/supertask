@@ -7,7 +7,7 @@
 
 module.exports = {
   DOMAIN: 'http://localhost:9000',
-  SESSION_SECRET: "passporttest-secret",
+  SESSION_SECRET: "passporttest-secret", // This is just for local testing... the session_secret on the actual webpage is set up differently
   // Control debug level for modules using visionmedia/debug
   DEBUG: ''
 };
